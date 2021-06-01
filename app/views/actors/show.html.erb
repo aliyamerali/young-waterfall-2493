@@ -1,0 +1,9 @@
+<h3> <%= @actor.name %> </h3>
+<p> Age: <%= @actor.age %> </p>
+
+<h4>Actors that <%=@actor.name%> has worked with:</h4>
+<ul>
+  <% @actor.coactors.each do |coactor| %>
+    <li><%=coactor.name%></li>
+  <% end %>
+</ul>
