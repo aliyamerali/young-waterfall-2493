@@ -4,8 +4,7 @@ class Actor < ApplicationRecord
 
   def coactors
     movie_ids = movies.pluck(:id)
-    Movie.joins(:actors)
-         .select('actors.name')
+    Actor.joins(:movies)
          .where('movies.id' => movie_ids)
          .where.not("actors.id = #{self.id}")
          .distinct
