@@ -7,3 +7,10 @@
     <li><%= movie.title %></li>
   <% end %>
 </ul>
+
+<p>Actors that have appeared in <%= @studio.name %>'s movies:'</p>
+<ul>
+  <% @movies.working_actors_by_age.each do |actor| %>
+    <li><%= actor.name %></li>
+  <% end %>
+</ul>
