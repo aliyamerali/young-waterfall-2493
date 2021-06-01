@@ -33,6 +33,20 @@ RSpec.describe 'Movies show page' do
   it 'shows all the actors in the movie' do
     expect(page).to have_content(@goldblum.name)
     expect(page).to have_content(@dern.name)
+    expect(page).to_not have_content(@myers.name)
+  end
+
+  it 'has a form to add another actor to the movie page' do
+    expect(page).to have_field("Actor Name")
+    expect(page).to have_button("Add Actor to Movie")
+  end
+
+  it 'adds an actor to the movie page when one is submitted' do
+    fill_in 'Actor Name', with: 'Eddie Murphy'
+    click_button 'Add Actor to Movie'
+
+    expect(current_path).to eq("/movies/#{@jurassic.id}")
+    expect(page).to have_content(@murphy.name)
   end
 
 end
