@@ -8,3 +8,10 @@
     <li><%=actor.name%></li>
   <% end %>
 </ul>
+
+<h4>Add an Actor to <%= @movie.title%>:</h4>
+<%= form_with url: "/movies/#{@movie.id}", method: :patch, local: true do |f| %>
+  <%= f.label :actor_name, "Actor Name" %>
+  <%= f.text_field :actor_name %>
+  <%= f.submit "Add Actor to Movie" %>
+<% end %>
